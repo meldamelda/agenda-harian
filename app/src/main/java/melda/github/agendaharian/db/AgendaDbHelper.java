@@ -24,7 +24,7 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE NAME IF EXISTS "+
+        db.execSQL("DROP TABLE IF EXISTS " +
                 AgendaDbInfo.TaskEntry.TABLE_NAME);
         onCreate(db);
     }
@@ -53,7 +53,8 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
             taskList.add(cursor.getString(idx));
             cursor.close();
             mReadableDB.close();
-            return taskList;
         }
+        return taskList;
     }
+
 }
